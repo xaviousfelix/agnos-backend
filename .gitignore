@@ -1,0 +1,10 @@
+echo ".env
+.env.*
+*.log
+node_modules/
+vendor/
+pgdata/
+*.db
+.DS_Store
+__pycache__/
+" > .gitignore
