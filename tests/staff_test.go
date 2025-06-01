@@ -23,7 +23,7 @@ import (
 )
 
 func ConnectTestDB() *gorm.DB {
-	dsn := "host=localhost user=postgres password=232546 dbname=hospital_test port=5432 sslmode=disable"
+	dsn := "host=db user=postgres password=232546 dbname=hospital_test port=5432 sslmode=disable"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect test database:", err)
@@ -165,13 +165,13 @@ func TestStaffCreate_Success(t *testing.T) {
 	uniqueUsername := fmt.Sprintf("newstaff_%d", time.Now().UnixNano())
 
 	body := map[string]interface{}{
-		"username":    uniqueUsername,
-		"password_hash":    "12345678",
-		"hospital_id": 1,
-		"first_name":  "New",
-		"last_name":   "Staff",
-		"email":       fmt.Sprintf("%s@example.com", uniqueUsername),
-		"role":        "staff",
+		"username":      uniqueUsername,
+		"password_hash": "12345678",
+		"hospital_id":   1,
+		"first_name":    "New",
+		"last_name":     "Staff",
+		"email":         fmt.Sprintf("%s@example.com", uniqueUsername),
+		"role":          "staff",
 	}
 	jsonValue, _ := json.Marshal(body)
 	req := httptest.NewRequest("POST", "/staff/create", bytes.NewBuffer(jsonValue))
