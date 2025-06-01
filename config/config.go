@@ -8,9 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 
-	// "gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	// "modernc.org/sqlite"
 )
 
 var DB *gorm.DB
