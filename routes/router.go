@@ -4,9 +4,7 @@ import (
 	"net/http"
 
 	"backend/controllers"
-	"backend/handlers"
 	"backend/middleware"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,9 +20,6 @@ func SetupRoutes(r *gin.Engine) {
 	r.POST("/staff/login", controllers.LoginStaff)
 	// Route สำหรับสร้าง staff ใหม่
 	r.POST("/staff/create", controllers.CreateStaff)
-
-	// ✅ Proxy route สำหรับเรียก API จริง
-	r.GET("/external/patient/:id", handlers.GetExternalPatient)
 
 	//กลุ่มที่ต้อง login ด้วย JWT
 	auth := r.Group("/patient", middleware.AuthMiddleware())
